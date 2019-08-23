@@ -1,5 +1,21 @@
 # Bootstrap Combobox
 
+This repository is a fork of the  bootstrap-combobox by Daniel Farrell, but with extensive changes made.
+#### Changes improve compatibility with bootstrap 4
+- Proper markup for dropdown toggle in an input group
+- Handles existing input groups
+- Handles small/large form-control
+
+#### Functional Changes
+- Changes made to functionality for a slightly different use case.
+- Blank items my now be included at the beginning of the list, does not interfere with placeholders.
+- Clicking dropdown button will always show full unfiltered list.  Clear function has been removed.
+
+##### Accessibility changes
+- Assigns a new id to the input control, based on existing id with extension.  If a label is associated with the original select, the label is associated to the new input control.
+- various aria attribute changes.
+
+## Original Text
 We had need of a combobox at work and after looking around at the available options I was not happy with any of them.  The project had all it's styling based on Twitter's Bootstrap, so building on that made sense.
 
 ## How to install it
@@ -13,21 +29,6 @@ Previously, this was the only way to install the plugin. You will need two files
 1. js/bootstrap-combobox.js
 2. css/bootstrap-combobox.css
 
-#### 2. Npm install
-
-```
-npm install @danielfarrell/bootstrap-combobox
-```
-
-#### 3. Bower install
-
-This plugin is now in bower! If you've already installed bower on your machine, simply use the command:
-
-```
-bower install bootstrap-combobox
-```
-
-This will install the plugin to your bower_components folder. For more information please see http://bower.io/
 
 ## How to use it
 
@@ -86,13 +87,6 @@ When activating the plugin, you may include an object containing options for the
 ## Dependencies
 Uses the latest 1.X version of jQuery and the latest version of Bootstrap.
 
-## Live Example
-
-### Bootstrap 2.0 Version
-http://dl.dropbox.com/u/21368/bootstrap-combobox/index.html
-
-### Bootstrap 3.0 Version
-http://bootstrap-combobox-test.herokuapp.com/
 
 ## License
 
