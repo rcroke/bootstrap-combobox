@@ -15,6 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ============================================================ */
+ /*
+ * This file has been extensively from the original.
+ * 
+ * Changes are to improve bootstrap 4 compatibility, improve accessibility,
+ * and functional changes to the way this javascript works
+ * 
+ * 
+ * 
+ * =========================================================+++ */
 
 (function ($) {
 
