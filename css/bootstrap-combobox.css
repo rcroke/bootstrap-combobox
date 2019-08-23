@@ -16,19 +16,14 @@
 .combobox-container .dropdown-toggle.custom-icon::after {
   content: none;
 }
-.combobox-container.combobox-selected .dropdown-toggle::after {
-  content: none;
+.combobox-container .dropdown-item{
+  min-height: 1.5rem;
 }
-.combobox-container .utf-remove::after {
-  content: "\00D7";
-}
+
 .combobox-container.combobox-selected .pulldown {
   display: none;
 }
-/* :not doesn't work in IE8 */
-.combobox-container:not(.combobox-selected) .remove {
-  display: none;
-}
+
 .typeahead-long {
   max-height: 300px;
   overflow-y: auto;

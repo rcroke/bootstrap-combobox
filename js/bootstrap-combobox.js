@@ -23,7 +23,7 @@
   /* COMBOBOX PUBLIC CLASS DEFINITION
    * ================================ */
 
-  var hasPopper = typeof Popper !== 'undefined';
+  var hasPopper = false; //typeof Popper !== 'undefined';
 
   var Combobox = function (element, options) {
       this.options = $.extend({}, $.fn.combobox.defaults, options);
@@ -122,10 +122,10 @@
               , selectedValue = '';
           this.$source.find('option').each(function () {
               var option = $(this);
-              if (option.val() === '') {
-                  that.options.placeholder = option.text();
-                  return;
-              }
+              //if (option.val() === '') {
+              //    that.options.placeholder = option.text();
+              //    return;
+              //}
               map[option.text()] = option.val();
               source.push(option.text());
               if (option.prop('selected')) {
@@ -241,7 +241,7 @@
           } else {
               return '<div class="combobox-container"> <input type="hidden" /> <div class="input-group"> <input type="text" autocomplete="off" />'
                   + '<span class="input-group-append" >'
-                  + '<span class="input-group-text dropdown-toggle' + (this.options.iconCaret ? ' custom-icon' : '') + (hasPopper ? ' data-toggle="dropdown" data-reference="parent"' : '') + '">'
+                  + '<span class="input-group-text dropdown-toggle"' + (this.options.iconCaret ? ' custom-icon' : '') + (hasPopper ? ' data-toggle="dropdown" data-reference="parent"' : '') + '>'
                   + (this.options.iconCaret ? '<span class="' + this.options.iconCaret + ' pulldown" />' : '')
                   + (this.options.iconRemove ? '<span class="' + this.options.iconRemove + ' remove" />' : '<span class="utf-remove remove" />')
                   + '</span>' + this.options.menu +
@@ -258,11 +258,20 @@
               , caseSensitive = []
               , caseInsensitive = []
               , item;
-
-          while (item = items.shift()) {
-              if (!item.toLowerCase().indexOf(this.query.toLowerCase())) { beginswith.push(item); }
-              else if (~item.indexOf(this.query)) { caseSensitive.push(item); }
-              else { caseInsensitive.push(item); }
+          var emptyItem=false;
+          while ((item = items.shift())!== undefined) {
+              
+              if(item!==""){
+                if (!item.toLowerCase().indexOf(this.query.toLowerCase())) { beginswith.push(item); }
+                else if (~item.indexOf(this.query)) { caseSensitive.push(item); }
+                else { caseInsensitive.push(item); }
+              }
+              else{
+                  emptyItem = true;
+              }
+          }
+          if(emptyItem){
+              beginswith.unshift("");
           }
 
           return beginswith.concat(caseSensitive, caseInsensitive);
@@ -334,6 +343,13 @@
               }
           }
       }
+      ,toggleShowAll: function(){
+          if(!this.disabled){
+              this.query='';
+              this.$element.focus();
+              this.process(this.source);
+          }
+      }
 
       , scrollSafety: function (e) {
           if (e.target.tagName === 'div') {
@@ -377,7 +393,7 @@
               .on('mouseleave', 'a', $.proxy(this.mouseleave, this));
 
           this.$button
-              .on('click', $.proxy(this.toggle, this));
+              .on('click', $.proxy(this.toggleShowAll, this));
       }
 
       , eventSupported: function (eventName) {
