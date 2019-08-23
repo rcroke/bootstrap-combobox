@@ -107,16 +107,16 @@ $(function () {
         combobox.lookup()
 
         ok(combobox.$menu.is(":visible"), 'menu is visible')
-        equal(combobox.$menu.find('li').length, 3, 'has 3 items in menu')
+        equal(combobox.$menu.find('a').length, 3, 'has 3 items in menu')
         equal(combobox.$menu.find('.active').length, 1, 'one item is active')
-        ok(combobox.$menu.find('li').first().hasClass('active'), "first item is active")
+        ok(combobox.$menu.find('a').first().hasClass('active'), "first item is active")
 
         $input.trigger({
           type: 'keypress'
         , keyCode: 40
         })
 
-        ok(combobox.$menu.find('li').first().next().hasClass('active'), "second item is active")
+        ok(combobox.$menu.find('a').first().next().hasClass('active'), "second item is active")
 
 
         $input.trigger({
@@ -124,7 +124,7 @@ $(function () {
         , keyCode: 38
         })
 
-        ok(combobox.$menu.find('li').first().hasClass('active'), "first item is active")
+        ok(combobox.$menu.find('a').first().hasClass('active'), "first item is active")
 
         combobox.$menu.remove()
         $select.remove()
