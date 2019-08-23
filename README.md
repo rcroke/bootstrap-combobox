@@ -1,6 +1,6 @@
 # Bootstrap Combobox
 
-This repository is a fork of the  bootstrap-combobox by Daniel Farrell, but with extensive changes made.
+This repository is a fork of the  [bootstrap-combobox by Daniel Farrell](https://github.com/danielfarrell/bootstrap-combobox), but with extensive changes made.
 #### Changes improve compatibility with bootstrap 4
 - Proper markup for dropdown toggle in an input group
 - Handles existing input groups
